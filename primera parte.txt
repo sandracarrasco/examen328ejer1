@@ -1,0 +1,44 @@
+CREATE TABLE [consejeria] (
+    [idConsejeria] float primary key,
+    [ArchivoConsejeria] float,
+    [ConsejeriaResponsable] nvarchar(255)
+    
+)
+CREATE TABLE [organismo] (
+    [idOrganismo] float primary key,
+    [ArchivoOrganismo] float,
+    [OrganismoResponsable] nvarchar(255)
+    
+)
+CREATE TABLE [materia] (
+    [idMateria] float primary key,
+    [ArchivoMateria] float,
+    [MateriaCatalogo] nvarchar(255)
+    
+)
+CREATE TABLE [actualizacion] (
+    [idActualizacion] float primary key,
+    [Frecuencia de actualización] nvarchar(255),
+    [ultimaActualizacion] float,
+    [Estado] nvarchar(255)
+)
+
+CREATE TABLE [catalogo] (
+    [idCatalogo] float primary key,
+    [Título] nvarchar(255),
+    [Tipo de Compromiso] nvarchar(255),
+	[Formatos disponibles para descarga] nvarchar(255),
+    [Descripción] nvarchar(255),
+    [Enlace al contenido] nvarchar(255),
+	[idConsejeria] float ,
+	[idOrganismo] float ,
+	[idMateria] float ,
+	[idActualizacion] float ,
+	CONSTRAINT fk_consejeria FOREIGN KEY (idConsejeria) REFERENCES consejeria (idConsejeria),
+    CONSTRAINT fk_organismo FOREIGN KEY (idOrganismo) REFERENCES organismo (idOrganismo),
+    CONSTRAINT fk_materia FOREIGN KEY (idMateria) REFERENCES materia(idMateria),
+	CONSTRAINT fk_actualizacion FOREIGN KEY (idActualizacion) REFERENCES actualizacion(idActualizacion)
+
+)
+
+
